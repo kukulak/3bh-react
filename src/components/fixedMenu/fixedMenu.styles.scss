@@ -1,0 +1,109 @@
+$brightColor: #aaa;
+$medColor: #666;
+$darkColor: #222;
+$blueColor: #009DEF;
+
+
+.fixedMenu{
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    pointer-events: none; 
+}
+
+.logoHam{
+    display: flex;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+    align-self: start;
+    margin: 9%;
+    align-items: center;
+}
+
+.logo3bh{
+    width: 160px;
+    grid-row: 1;
+    grid-column: 1;
+    pointer-events: all; 
+    margin-right: 10px;
+    margin-right: 30px;
+    
+  }
+
+.idiomas{
+    color: $brightColor;
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    align-self: start;
+    margin: 9%;
+    a{
+        color: $brightColor;
+    }
+}
+
+.mute{
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: start;
+    align-self: end;
+    margin: 9%;
+}
+
+
+.redes{
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: end;
+    align-self: end;
+    margin: 9%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: end;
+  .face{
+    pointer-events: all; 
+    text-align: right;
+    width: 50px;
+    margin: 10px 0px;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: right;
+  }
+
+  .insta{
+    pointer-events: all; 
+    width: 50px;
+    margin: 10px 0px;
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: right;
+  }
+}
+
+.hamCircle{
+    border-radius: 100%;
+    background-color: grey;
+    background-color: $medColor;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+}
+
+.hamLines{
+    margin: 3px 0;
+    border-radius: 2px;
+    background-color: white;
+    width: 25px;
+    height: 3px;
+}

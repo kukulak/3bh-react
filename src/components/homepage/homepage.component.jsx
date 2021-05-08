@@ -2,37 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './homepage.styles.scss';
 
+// IMPORT MODULES
+
+
+import FixedMenu from '../fixedMenu/fixedMenu.components';
+import HeroBanner from './herobanner.component';
+import Proyectos from './projects.component';
+import Video from './video.component';
+
 const HomePage = () => (
     <div className="homepage">
+        
         <div className="menu"> 
-            <div>
-                LOGO
-            </div>
-            <div>
-                MENU
-            </div>
-            <div>
-                REDES
-            </div>
-            <div>
-                MUTE
-            </div>
-            <div>
-                IDIOMAS
-            </div>
+        <FixedMenu/>
         </div>
-        <div className="hero">
-            <div className="controlsVideo">
 
-            </div>
-            <div className="video">
-
-            </div>
-        </div>
-{/* 
+     
+        <HeroBanner />
         <Proyectos />
+        <Video category='14'/>
+{/* 
         <Descanso />
-        <Video />
         <RedInstagram />
         <Parners />
         <Footer /> */}
