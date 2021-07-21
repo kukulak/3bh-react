@@ -1,8 +1,8 @@
 import React from 'react'
 import './fixedMenu.styles.scss'
-import face from '../../assets/iconos/iconInsta.svg';
+import insta from '../../assets/iconos/iconInsta.svg';
 
-import insta from '../../assets/iconos/iconYoutube.svg';
+import face from '../../assets/iconos/iconFacebook.svg';
 
 // IMPORT MODULES
 
@@ -10,10 +10,10 @@ import insta from '../../assets/iconos/iconYoutube.svg';
 const Redes = () => (
 
     <div className='redes'>
-        <a href="http://www.facebook.com" className="face" >
+        <a href="http://www.facebook.com" target="_blank" className="face" >
             <img src={face} alt="faceBook" />
         </a>
-        <a href="http://www.instagram.com" className="insta">
+        <a href="http://www.instagram.com" target="_blank" className="insta">
             <img src={insta}  alt="instagram" />
         </a>
 

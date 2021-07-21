@@ -9,41 +9,29 @@ body{
 }
 
 
+    .titulo{
+        font-size: 3em;
+        color: $brightColor;
+        display: grid;
+        justify-content: center;
+        margin-top: 60px;
 
-body {
-    margin: 0.1px;
-    background: linear-gradient(242deg, #000000, #626262, #323232);
-    background-size: 600% 600%;
-    background: -webkit-gradient(linear, center top, center bottom, from(#333333), to(#656565));
-    background: -webkit-linear-gradient(#000000, #626262, #656565);
-    background: -moz-linear-gradient(#000000, #626262, #656565);
-    background: -o-linear-gradient(#000000, #626262, #656565);
-    background: -ms-linear-gradient(#000000, #626262, #656565);
+        .tituloFlecha{
+            img{
+                width: 38px;
+            }
     
-    
-    -webkit-animation: AnimationDegrade 19s ease infinite;
-    -moz-animation: AnimationDegrade 19s ease infinite;
-    -o-animation: AnimationDegrade 19s ease infinite;
-    animation: AnimationDegrade 19s ease infinite;
+        }
     }
-    
-    @-webkit-keyframes AnimationDegrade {
-    0%{background-position:0% 83%}
-    50%{background-position:100% 18%}
-    100%{background-position:0% 83%}
-    }
-    @-moz-keyframes AnimationDegrade {
-    0%{background-position:0% 83%}
-    50%{background-position:100% 18%}
-    100%{background-position:0% 83%}
-    }
-    @-o-keyframes AnimationDegrade {
-    0%{background-position:0% 83%}
-    50%{background-position:100% 18%}
-    100%{background-position:0% 83%}
-    }
-    @keyframes AnimationDegrade {
-    0%{background-position:0% 83%}
-    50%{background-position:100% 18%}
-    100%{background-position:0% 83%}
+
+
+    @media screen and (max-width: 600px) {
+        .titulo{
+            font-size: 1.5em;
+            .tituloFlecha{ 
+                img{
+                    width: 25px;
+                }
+            }
+        }
     }

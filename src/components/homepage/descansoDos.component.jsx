@@ -1,33 +1,24 @@
 import React, { Component, useState, useEffect } from 'react';
 
-import './footer.styles.scss';
-
-
-// import Completo from '../../assets/iconos/logo.inline.svg'
-
-import {ReactComponent as Completo} from '../../assets/iconos/logoCompleto.svg';
-import {ReactComponent as Sobre} from '../../assets/iconos/sobre.svg';
-
-
+import './descansoDos.styles.scss';
 
 import { gsap } from "gsap";
 
 
 
 // IMPORT MODULES
+import ImgDescanso from './descansoImages.component'
 
-import BtnFlecha from './btnFlecha.component'
-import Redes from './../fixedMenu/redes.component';
 
 
 function textToHTML(str){
     var parser = new DOMParser();
     var doc = parser.parseFromString(str, 'text/html');
     var valElement = doc.querySelectorAll('p');
-    
+   
     return valElement.item(0).innerText
-    
-}
+
+  }
 
 
 
@@ -70,13 +61,35 @@ function takeImages(str){
   
 
 
-function HomeFooter() {
+function DescansoDos() {
 
-    // const MyComponent = () => <Completo />;
     const pro = React.createRef();
     const [projects, setProjects] = useState([]);  
 
 
+    // useEffect(() => {
+        
+        
+              
+    //         gsap.from(pro.current, {
+    //             scrollTrigger: {
+    //               trigger: ".DescansoDos",
+    //               start: "top 80%",
+    //               end: "10",
+    //               pin: false,
+    //               scrub: true,
+    //               markers: false,
+    //               toggleActions: "play pause resume reset"
+    //             },
+    //             y: "120%",
+    //             ease: "none",
+    //             duration: 10.5,
+    //             alpha: 0
+    //           });
+              
+    //         }
+            
+    //         )
 
     useEffect(()=>{
         let mounted = true;
@@ -91,40 +104,30 @@ function HomeFooter() {
         
 
     return(    
-        <div className="footer">
+        <div className="descansoDos">
              
-    
-            <div className="btnFooter">
-                <BtnFlecha txt="Servicios"/>
-                <BtnFlecha txt="Nosotros"/>
-                <BtnFlecha txt="Tienda"/>
-                <BtnFlecha txt="Contacto"/>
-                <BtnFlecha txt="Proyectos"/>
-                <BtnFlecha txt="Galería"/>
-                <BtnFlecha txt="Clientes"/>
-            </div>
+            {projects.map(item =>
+                <div className="no-highlight fraseContainer">
+                      
+                        <div className='imagesDescanso'>
+                        {/* <div  ref={ pro } className='imagesDescanso'> */}
+                            
+                            {/* { takeImages(item.content.rendered).map((item) => (
+                                <ImgDescanso imagen={ item } alt= { item } />
+                                
+                            )) } */}
 
-            <div className="logoFooter">
-                <Completo />
-            </div>
-            
-            <div className="contactoFooter">
-                {/* <Sobre/> */}
-                 <a href="mailto:contacto@3BH.com">contacto@3BH.com
-                 </a>
-            </div>
+                        </div>
 
-            <div className="infoFooter">
-                <div className="redesFooter">
-                    <Redes />
+                        <div className="no-highlight fraseDescansoDos">
+                            { textToHTML(item.content.rendered) }     
+                        </div>
+
                 </div>
-                <div className="legalesFooter">
-                    <p>3BLUEHOUSE 2021&reg;</p> <p> • </p> 
-                    <a>AVISO LEGAL</a> <p> • </p>
-                    <a>POLITICAS DE PRIVACIDAD</a>        
-                </div>      
+            )}
+
             
-            </div>
+
                 
             </div>
     
@@ -140,4 +143,4 @@ function HomeFooter() {
 
 
 
-export default HomeFooter;
+export default DescansoDos;

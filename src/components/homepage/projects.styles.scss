@@ -3,10 +3,14 @@ $medColor: #333;
 $darkColor: #222;
 $blueColor: #009DEF;
 
+.homePage{
+    overflow-x: hidden;
+}
+
 .contenedorProjects{
     color: $brightColor;
     display: flex;
-    overflow-x: hidden;
+    
     height: 90vh;
     align-items: center;
     justify-content: flex-start;
@@ -15,11 +19,21 @@ $blueColor: #009DEF;
     flex-direction: row;
 }
 
+
 .projects{
     display: flex;
     gap: 26px;
     margin: 0 130px;
 }
+
+.cp1{ 
+    margin-top: -35px;
+}
+
+.cp2{
+    margin-top: -350px;
+}
+
 
 .proPic{
     img{
@@ -67,6 +81,15 @@ $blueColor: #009DEF;
     height: 25px;
     justify-content: flex-start;
     text-decoration: none;
+   
+    svg{
+
+        transform: rotateX(180deg);
+        height: inherit;
+        height: 15px;
+        width: 15px;
+        margin-left: 5px;
+      }
     img{
         transform: rotateX(180deg);
         height: inherit;
@@ -82,3 +105,10 @@ $blueColor: #009DEF;
 //     height: 13px;
 //     position: relative;
 // }
+
+
+.spaceProjects{
+    overflow-x: clip;
+    transition: top 0.5s;
+    top: 0;
+}

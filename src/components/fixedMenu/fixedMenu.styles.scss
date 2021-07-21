@@ -23,6 +23,7 @@ $blueColor: #009DEF;
     align-self: start;
     margin: 9%;
     align-items: center;
+    pointer-events: all;
 }
 
 .logo3bh{
@@ -84,7 +85,47 @@ $blueColor: #009DEF;
     justify-self: right;
   }
 }
+.hamMenuBtn:hover:after{
+    content: ' ';
+    width: 12px;
+    height: 12px;
+    margin-left: 3px;
+    background-color: transparent;
+    background-image: url(./../../assets/iconos/flecha.svg);
+    -moz-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: FlipV;
+    -ms-filter: "FlipV";
+  }
+  
 
+ 
+  
+  .hamMenu{
+    
+    .redes{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      align-self: start;
+      margin: 0;
+      // gap: 20px;
+      // margin-left: -45px;
+      margin-top: 32px;
+
+      img{
+        width: 28px;
+      }
+      .face{
+        text-align: left;
+      }
+      .insta{
+        // width: 38px;
+      }
+    }
+  }
 .hamCircle{
     border-radius: 100%;
     background-color: grey;
@@ -98,7 +139,29 @@ $blueColor: #009DEF;
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: space-around;
-}
+    transition: 0.5s;
+    margin-left: -190px;
+    pointer-events: all; 
+    // &:hover{
+    //   width: 110vw;
+    //   height: 110vw;
+      
+    //   place-self: center;
+    //   justify-self: center;
+    //   align-self: center;
+     
+    //   margin: -36% -22%;
+      
+    // }
+
+    // position: absolute;
+    // margin: 0 0 0 186px;
+    // display: block;
+
+  }
+
+
+
 
 .hamLines{
     margin: 3px 0;
@@ -106,4 +169,166 @@ $blueColor: #009DEF;
     background-color: white;
     width: 25px;
     height: 3px;
+}
+
+
+.hamX{
+  border-radius: 100%;
+  background-color: grey;
+  background-color: $darkColor;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  transition: 0.5s;
+  // margin-left: -190px;
+  pointer-events: all; 
+  :first-child{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    transform: rotateZ(135deg);
+  }
+  :last-child{
+    transform: rotateZ(-135deg);
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+  .hamLines:hover{
+    background-color: $blueColor;
+  }
+
+}
+
+
+.contenedorHamMenu{
+  pointer-events: none; 
+  display: grid;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  // background-color: $darkColor;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  z-index: 10000;
+  .hamMenu{
+    pointer-events: all; 
+    z-index: 2;
+    background-color: $darkColor;
+    display: flex;
+    width: 3000px;
+    height: 3000px;
+    border-radius: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    align-content: stretch;
+    // position: absolute;
+    // top: -50vh;
+    // left: 0;
+
+    // transition: 1s;
+    // width: 0.1vw;
+    // height: 0.1vw;
+    // width: 20.1vw;
+    // height: 20.1vw;
+    overflow: hidden;
+
+
+    .btnFlecha{
+      margin: 13px 0;
+      align-self: center;
+      align-items: baseline;
+      margin: 31px 0;
+      align-self: center;
+      align-items: baseline;
+      font-size: xxx-large;
+  
+      svg{
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+}
+
+
+.menuDesign{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: 250px;
+}
+
+.contenedorBtns{
+  width: 100%;
+
+}
+
+
+.my-modal-veil {
+  background-color: black;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+body{
+  /* Cursor styles */
+  --cursor-stroke: rgb(117, 117, 117);
+  --cursor-fill: none;
+  --cursor-stroke-width: 1px;
+}
+
+.cursor {
+  display: none;
+}
+
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+
+@media screen and (max-width: 600px) {
+  .menu{
+    .fixedMenu{
+      .logoHam{
+        background-color: black;
+        width: 99.5vw;
+        padding: 1% 0 1% 6%;
+        margin: 0;
+        .logo3bh{
+          width: 100px;
+        }
+        .hamCircle{
+         transform: translate(170px, 0) scale(0.7) !important;
+        }
+      }
+      .redes{
+        display: none;
+      }
+      .idiomas{
+        display: none;
+      }
+      .mute{
+        display: none;
+      }
+    }
+  }
 }

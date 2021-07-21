@@ -9,18 +9,17 @@ function ProPic(props) {
     const pic = React.createRef();
 
     useEffect(() => {
-        gsap.from(pic.current, {
+        gsap.to(pic.current, {
             scrollTrigger:{
                 trigger: ".proPic",
-                start: "center center",
-                end: "center center",
-                pin: false,
-                scrub: true,
-                markers: true,
-                toggleActions: "play pause resume reset",
+                start: "top center",
+                // end: "center center",
+                markers: false,
+                toggleActions: "play pause resume reset"
 
             },
-            x: -100,
+            x: -10,
+            // rotation: 360,
             ease: 'none',
             duration: 2
         })

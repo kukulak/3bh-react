@@ -2,6 +2,9 @@ import React, { Component, useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import './homepage.styles.scss';
 import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // IMPORT MODULES
 import ProTitulo from './projectsTitulo.component';
@@ -11,6 +14,9 @@ import ProPartners from './projectsParners.component';
 import BtnFlecha from './btnFlecha.component';
 
 
+import TituloFlecha from './titulos.component';
+
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 function textToHTML(str){
     var parser = new DOMParser();
@@ -70,35 +76,56 @@ function fotosParners(str) {
   }
 
 function setVideo(){
-    return fetch(`https://3bh.mx/api/wp-json/wp/v2/posts?categories=16&per_page=3`)
+    return fetch(`https://3bh.mx/api/wp-json/wp/v2/posts?categories=16&per_page=4`)
     // return fetch('https://3bh.mx/api/wp-json/wp/v2/posts?categories=14&page=1&per_page=1')
     .then(res => res.json())
    
 }  
+
+function doUltraClass(number){
+    if (number % 2){
+        number = 1
+    }else{
+        number = 2
+    }
+    return number;
+}
   
   
 
-function HomePage() {
+function Proyectos() {
 
     const pro = React.createRef();
     const [projects, setProjects] = useState([]);   
+    const [ultraClass, setUltraClass] = useState([]);
     
         useEffect(() => {
-            gsap.from("contenedorProjects", {
-                scrollTrigger:{
-                    trigger: ".contenedorProjects",
-                    start: "100 center",
-                    end: "+=1010",
-                    pin: true,
-                    scrub: true,
-                    markers: true,
-                    toggleActions: "play pause resume reset",
-    
+            gsap.fromTo(pro.current,
+                {
+                    // x: "-220%",
+                    x: -3420,
+                    y: 1,
+                    ease: 'none',
+                    duration: 2
                 },
-                x: "-10%",
-                ease: 'none',
-                duration: 2
-            })
+                {
+                    x: 400,
+                    ease: 'none',
+                    duration: 2,
+                    scrollTrigger:{
+                        trigger: pro.current,
+                        start: "300px center",
+                        // end: "bottom 100px",
+                        end: () => "+=" + document.querySelector(".contenedorProjects").offsetWidth,
+                        pin: ".spaceProjects",
+                        // pinSpacing: false,
+                        // scrub: true,
+                        scrub: 1,
+                        markers: false
+                        // toggleActions: "play pause resume pause",
+                    },
+                }
+            )
         }, [pro]);
 
     useEffect(()=>{
@@ -111,33 +138,51 @@ function HomePage() {
          })
          return() => mounted = false;
      }, [])
-     
-    return(
-        <div ref={pro} className='contenedorProjects'>
 
-        {projects.map(item => 
-       
-            
-            <div className="projects">
-                
-                <ProPic img={ fotoProyecto(item.content.rendered)[1] } />
+    //  useEffect(() => {
+    //     let mounted = true;
+    //     doUltraClass()
+    //     .then(items => {
+    //         if(mounted){
+    //             setUltraClass(items)
+    //         }
+    //     })
+    //     return() => mounted = false;
+    //  }, [])
+     
+    
+
+    return(
+        <div className="spaceProjects">
+
+            <TituloFlecha txt="Proyectos"/>
+
+            <div ref={pro} className='contenedorProjects'>
+
+            {projects.map((item, index) => 
+        
+        
+            <div className={`projects cp${doUltraClass(index)}`}>
+                    
+                <ProPic img={ fotoProyecto(item.content.rendered)[0] } />
                 <div className='proInfo'>
                     <ProTitulo titulo={item.title.rendered} />
                     <ProDescripcion descripcion={textToHTML(item.excerpt.rendered)}  />
                     <div className="groupPartner">
+                        
                         { fotosParners(item.content.rendered).map((item) => (
-                            
-                            //   <img className="imgPartnersHP" src={ item } alt={item.slug}/>
                             <ProPartners partners={ item } alt={item.slug}/>
-                            )) }
+                        )) }
+
                     </div>
                     <BtnFlecha goTo='dono' txt='ver proyecto' />
+                    </div>
                 </div>
-            </div>
 
-        
-        )}   
+
+            )}   
       
+            </div>
         </div>
     
 
@@ -145,4 +190,4 @@ function HomePage() {
 
 }
 
-export default HomePage;
+export default Proyectos;
