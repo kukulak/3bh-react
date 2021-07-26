@@ -70,9 +70,9 @@ $blueColor: #009DEF;
 }
 
 .btnFlecha{
-    align-content: flex-end;
-    align-self: flex-end;
-    align-items: flex-end;
+    // align-content: flex-end;
+    // align-self: flex-end;
+    // align-items: flex-end;
     color: $brightColor;
     display: flex;
     flex-direction: row;
@@ -81,6 +81,21 @@ $blueColor: #009DEF;
     height: 25px;
     justify-content: flex-start;
     text-decoration: none;
+
+
+
+    display: grid;
+    grid-template-columns: min-content 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 1.4em;
+    height: 25px;
+    text-decoration: none;
+    align-items: baseline;
+    justify-content: start;
+    justify-items: end;
+    font-size: xxx-large;
+
    
     svg{
 

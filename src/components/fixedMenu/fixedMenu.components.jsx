@@ -14,8 +14,8 @@ const FixedMenu = () => (
     <div className='fixedMenu'>
 
         <Menu/>
-        <Idiomas />
-        <Mute/>
+        {/* <Idiomas /> */}
+        {/* <Mute/> */}
         <Redes/>
         
     </div>

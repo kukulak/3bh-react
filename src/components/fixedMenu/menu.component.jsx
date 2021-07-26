@@ -106,8 +106,8 @@ function Menu(){
     
         <Logo/>
         {/* <Hamburger myName='idHamCircle' click={ () => takeAnim(anim)  } /> */}
-        <Hamburger myName='idHamCircle' click={ toogleMenu } />
-        <HamMenu close={toogleMenu} show={anim} />
+        {/* <Hamburger myName='idHamCircle' click={ toogleMenu } /> */}
+        {/* <HamMenu close={toogleMenu} show={anim} /> */}
     
     </div>
     

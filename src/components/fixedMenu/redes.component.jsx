@@ -10,10 +10,10 @@ import face from '../../assets/iconos/iconFacebook.svg';
 const Redes = () => (
 
     <div className='redes'>
-        <a href="http://www.facebook.com" target="_blank" className="face" >
+        <a href="https://www.facebook.com/3BHMX"  target="_blank" rel="noreferrer" className="face" >
             <img src={face} alt="faceBook" />
         </a>
-        <a href="http://www.instagram.com" target="_blank" className="insta">
+        <a href="https://www.instagram.com/3bhmex/" target="_blank" rel="noreferrer" className="insta">
             <img src={insta}  alt="instagram" />
         </a>
 

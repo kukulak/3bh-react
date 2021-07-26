@@ -14,7 +14,7 @@ const HeroBanner = () => (
 
     <div className="heroBanner">
         
-      <Video category='14' video='first' muter='mFirst' btn='btnFirst'/>
+      <Video category='14' video='first' muter='mFirst' btn='btnFirst' cont='contenedorMP' />
     
 
 
