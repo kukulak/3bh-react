@@ -313,8 +313,9 @@ body{
       .logoHam{
         background-color: black;
         width: 99.5vw;
-        padding: 1% 0 1% 6%;
+        padding: 5% 0 0% 6%;
         margin: 0;
+        box-shadow: 0 0 63px 60px black;
         .logo3bh{
           width: 100px;
         }
@@ -323,7 +324,9 @@ body{
         }
       }
       .redes{
-        display: none;
+        // display: none;
+            grid-column: 1;
+            margin: 0 14% 9% 0;
       }
       .idiomas{
         display: none;

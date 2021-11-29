@@ -1,8 +1,15 @@
 import React, { Component, useState, useEffect, useContext, useRef } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import audifonos from '../../assets/iconos/audifonos.svg';
 import './video.styles.scss';
 
+
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+  } from "react-device-detect";
 // IMPORTS
 
 
@@ -11,10 +18,23 @@ function stringToHTML(str) {
     var parser = new DOMParser();
     var doc = parser.parseFromString(str, 'text/html');
     var divVideo = doc.getElementsByClassName('wp-video');
+    var poster = doc.getElementsByClassName('wp-video')
     var pathElement = divVideo.item(0).innerText;
    
-
+    console.log("elpathdel MOVIE", pathElement)
     return pathElement;
+
+}
+
+function stringToPoster(imgP) {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(imgP, 'text/html');
+    let poster = doc.getElementsByClassName('wp-video')
+    let pathPoster = poster.item(0).childNodes[2].attributes[4].nodeValue;
+   
+    console.log("elpathdel POSTER", pathPoster)
+    // console.log(poster)
+    return pathPoster;
 
 }
 
@@ -36,17 +56,17 @@ async function ctrVideo(vid){
 }
 
 
-function Mute(vcr){
+async function Mute(vcr){
     vcr.muted = !vcr.muted
 }
 
-function HideMuter(hm){
+async function HideMuter(hm){
     console.log('this is HM', hm)
     hm.style.display = 'block'
 }
 
 
-function HideBtn(hb){
+async function HideBtn(hb){
     hb.style.display = 'none'
 }
 
@@ -67,24 +87,30 @@ function Video(props){
     const [btn, takeBtn] = useState([]);
     const [cont, contentMuter] = useState([]);
     
-    function setVideo(){
-        return fetch(`https://3bh.mx/api/wp-json/wp/v2/posts?categories=${props.category}&page=1&per_page=1`)
-        // return fetch('https://3bh.mx/api/wp-json/wp/v2/posts?categories=14&page=1&per_page=1')
-        .then(res => res.json())
+    // function setVideo(){
+    //     return fetch(`https://3bh.mx/api/wp-json/wp/v2/posts?categories=${props.category}&page=1&per_page=1`)
+    //     // return fetch('https://3bh.mx/api/wp-json/wp/v2/posts?categories=14&page=1&per_page=1')
+    //     .then(res => res.json())
        
-    }
+    // }
 
     useEffect(()=>{
         let mounted = true;
-        setVideo()
+        fetch(`https://3bh.mx/api/wp-json/wp/v2/posts?categories=${props.category}&page=1&per_page=1`)
+        // return fetch('https://3bh.mx/api/wp-json/wp/v2/posts?categories=14&page=1&per_page=1')
+        .then(res => res.json())
         .then(items => {
             if(mounted) {
                 setList(items)
+                takeVideo(document.getElementById(`${props.video}`))
+                takeMuter(document.getElementById(`${props.muter}`))
+                takeBtn(document.getElementById(`${props.btn}`))
+                contentMuter(document.getElementById(`${props.cont}`))
              }
          })
          return() => mounted = false;
      })
-     
+    // }, [props.category, props.video, props.muter, props.btn, props.cont])
  
     //  useEffect(()=>{
     //      let mounted = true;
@@ -97,21 +123,21 @@ function Video(props){
  
     //      return() => mounted = false;
  
-    //  }, [props.video, props.muter, props.btn, props.cont ]);
+    //  });
 
 
 
           
  
-     useEffect(()=>{
-            takeVideo(document.getElementById(`${props.video}`))
-            takeMuter(document.getElementById(`${props.muter}`))
-            takeBtn(document.getElementById(`${props.btn}`))
-            contentMuter(document.getElementById(`${props.cont}`))
+    //  useEffect(()=>{
+    //         takeVideo(document.getElementById(`${props.video}`))
+    //         takeMuter(document.getElementById(`${props.muter}`))
+    //         takeBtn(document.getElementById(`${props.btn}`))
+    //         contentMuter(document.getElementById(`${props.cont}`))
         
 
 
-    });
+    // }, [props.video, props.muter, props.btn, props.cont ]);
 
 
 
@@ -155,10 +181,26 @@ function Video(props){
                  <video  id={ props.video } autoPlay muted loop src="https://3bh.mx/api/wp-content/uploads/2021/04/videofinal-web1080DiscordNitro.mp4"></video> */}
 
 
+            <BrowserView>
              {list.map((item, index) => 
-             <video key={index} id={ props.video } autoPlay muted poster='' loop controls src={ stringToHTML(item.content.rendered) }></video>
-               
-            )}    
+           
+                <video key={index} id={ props.video } autoPlay muted loop controls poster={ stringToPoster(item.content.rendered) } src={ stringToHTML(item.content.rendered) }></video>
+            
+                 
+            )}   
+
+            </BrowserView>
+
+            <MobileView>
+                <h1> El video pesa mucho </h1>
+            </MobileView>
+
+
+
+{/* 
+             <video key="0" id={ props.video } autoPlay muted poster='' loop controls poster={ stringToPoster(list[0].content.rendered) } src={ stringToHTML(list[0].content.rendered) }></video>
+                */}
+             
     
 
 

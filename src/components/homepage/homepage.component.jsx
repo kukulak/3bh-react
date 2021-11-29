@@ -30,10 +30,10 @@ const HomePage = () => (
 
      
         <HeroBanner />
-        {/* <Proyectos /> */}
+        <Proyectos />
         {/* <DescansoUno /> */}
         {/* <Video category='18' video='second' muter='mSecond' btn='btnSecond'/> */}
-        {/* <HomeInstagram /> */}
+        <HomeInstagram />
         {/* <DescansoDos/> */}
         {/* <HomePartners /> */}
         {/* <HomeFooter />  */}
